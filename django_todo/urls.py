@@ -18,5 +18,7 @@ from django.urls import path
 from todo import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", views.say_hello, name="say_hello")
+    # empty "" url triggers say_hello view
+    path("", views.say_hello, name="say_hello"),
+    path("list", views.todo_list, name="todo_list")
 ]
