@@ -6,17 +6,17 @@
 </head>
 <body>
     <p>Things to do</p>
-    {% for item in items %}
     <table>
-        <tr>
-            <td>
-                {{item.name}}
-            </td>
-            <td>
-                {{item.done}}
-            </td>
-        </tr>
+        {% for item in things %}
+            <tr>
+                <td>
+                    {{item.name}}
+                </td>
+                <td>
+                    {{item.done}}
+                </td>
+            </tr>
+        {% endfor %}
     </table>
-    {% endfor %}
 </body>
 </html>
