@@ -10,5 +10,10 @@ def todo_list(request):
     # Get all data from Item table
     items = Item.objects.all()
     # Put items into django context (list) object
-    context = {"things":items}
+    context = {"items":items}
     return render(request, "./todo/todo_list.html", context)
+
+# Add item view.
+def add_item(request):
+    #print(request.name)
+    return render(request, "./todo/add_item.html")
