@@ -6,17 +6,19 @@
 </head>
 <body>
     <h3>Add an Item</h3>
-    <form action="./add_item" method="POST"></form>
+    <form action="add" method="POST">
+        {% csrf_token %}
     <p>
         <label for="id_name">Name</label>
-        <input type="text" id_name  name="name">
+        <input type="text" id=id_name  name="item_name">
     </p>
     <p>
-        <label for="id_name">Done</label>
-        <input type="checkbox" id_done  name="done">
+        <label for="id_done">Done</label>
+        <input type="checkbox" id=id_done  name="done">
     </p>
     <p>
         <button type="submit">Submit</button>
     </p>
+</form>
 </body>
 </html>

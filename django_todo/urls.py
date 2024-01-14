@@ -22,5 +22,5 @@ urlpatterns = [
     # empty "" url triggers say_hello view
     path("", say_hello, name="say_hello"),
     path("list", todo_list, name="todo_list"),
-    path("add", add_item, name="add_item")
+    path("add", add_item, name="add_thing")
 ]
