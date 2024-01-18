@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
 from todo.models import Item
+from .forms import ItemForm
 
 # Say hello view.
 def say_hello(request):
@@ -18,8 +19,15 @@ def todo_list(request):
 # Add item view.
 def add_item(request):
     if request.method == "POST":
-        name = request.POST.get("item_name")
-        done = "done" in request.POST
-        Item.objects.create(name=name, done=done)
+        # Create instance of form and populate with input data from form fields 
+        form = ItemForm(request.POST)
+        # Then compare data input with model
+        if form.is_valid():
+            # Save new item to database with no need for ORM
+            form.save()
         return redirect("todo_list")
-    return render(request, "./todo/add_item.html")
+    # Create instance of form
+    form = ItemForm()
+    # Put form variable in context to pass on rendering
+    context = {"form": form}
+    return render(request, "./todo/add_item.html", context)
