@@ -1,0 +1,19 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Edit an Item</h3>
+    <!--Omit form action to post to same route-->
+    <form  method="POST">
+        {% csrf_token %}
+        {# form variable replaces form html input fields required for model - not whole form #}
+        {{ form.as_p }}
+        <p>
+            <button type="submit">Submit</button>
+        </p>
+    </form>
+</body>
+</html>
