@@ -6,7 +6,7 @@
 </head>
 <body>
     <h3>Add an Item</h3>
-    <form action="add" method="POST">
+    <form action="./add" method="POST">
         {% csrf_token %}
         <!-- form variable replaces form input fields required for model - not whole form -->
         {{ form.as_p }}
