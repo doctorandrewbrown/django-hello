@@ -11,6 +11,7 @@
             <tr>
                 {% if item.done %}
                 <td>
+                    <!--del tag for strike-through-->
                     <del>
                         {{item.name}}
                     </del>
@@ -20,6 +21,11 @@
                     {{item.name}}
                 </td>
                 {% endif %}
+                <td>
+                    <a href="./edit/{{ item.id }}">
+                        <button>Edit</button>
+                    </a>
+                </td>
             </tr>
         {% empty %}    
         <tr>
