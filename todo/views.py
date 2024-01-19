@@ -22,7 +22,7 @@ def edit_item(request, item_id):
     if request.method == "POST":
         # get existing data from db for given id
         data = get_object_or_404(Item, pk=item_id)
-        # Create instance of form and get user edit data
+        # Create instance of form and pulate with existing data
         form = ItemForm(request.POST, instance=data)
         # Then compare data input with model
         if form.is_valid():
@@ -56,3 +56,21 @@ def add_item(request):
     # Put form variable in context to pass on rendering
     context = {"form": form}
     return render(request, "./todo/add_item.html", context)
+
+
+def toggle_item(request, item_id):
+    # get record from db
+    data = get_object_or_404(Item, pk=item_id)
+    # flip boolean
+    data.done = not data.done
+    # save change to db
+    data.save()
+    return redirect("todo_list")
+
+
+def delete_item(request, item_id):
+    # get record from db
+    data = get_object_or_404(Item, pk=item_id)
+    # save change to db
+    data.delete()
+    return redirect("todo_list")
